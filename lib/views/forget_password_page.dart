@@ -1,45 +1,99 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sakni/widgets/custom_container.dart';
+import 'package:sakni/views/select_pass.dart';
 import 'package:sakni/widgets/custom_text_field.dart';
+import 'package:sakni/widgets/custom_text_home.dart';
 
-import 'package:sakni/widgets/high_container.dart';
 
-class ForgetPasswordPage extends StatelessWidget {
+
+class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({super.key});
+
+  @override
+  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
+}
+
+class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
+  String phoneNumber='';
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       
-      body:Stack(
+      body: Stack(
         children: [
-          HighContainer(title: 'نسيت كلمة المرور',
-      subTitle: 'اختر الطريقة التي تريد ان تستلم بها كود استرجاع كلمة المرور',),
-       Positioned(
+          CustomTextHome(title: 'التحقق من الهاتف', subTitle: 'برجاء أدخل رقم هاتفك'),
+           Positioned(
           top: 232.h,
           left: 0,
           right: 0,
-          child: Container(
-            height: 580.h
-      ,
-        decoration: BoxDecoration(
+          child:Container(
+                height: 580.h
+                ,
+                  decoration: BoxDecoration(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(40.r),
           topRight: Radius.circular(40.r)),
-          color: Colors.white),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16).r,
-              child: Column(
-                children: [
-                  SizedBox(height: 60.h,),
-                  CustomFormTextField(hintText: 'رقم الهاتف', suffixIcon: Icons.phone, onChanged: (Data){}, borderColor:Color(0xff15B097),maxLines: 3,)
-                ],
-              ),
-            ),
-          ),
+          color: Colors.white
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16).w,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 108.h,),
+                        CustomFormTextField(hintText:'رقم الهاتف' ,suffixIcon:Icon(Icons.phone),prefixIcon:Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                           CountryCodePicker(),
+                          ],
+                        ) ,onChanged: (value){
+                         setState(() {
+                         phoneNumber=value;
+                           
+                         });
+                        },),
+                        SizedBox(height: 279.h,),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder:(context){
+                              return SelectPass(
+                                phoneNumber: phoneNumber,
+                              );
+                            }));
+                          },
+                          child: Container(
+                            height: 54.h,
+                            width: 343.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25.r),
+                              color: Color(0xff008080),
+                            ),
+                            child: Center(
+                              child: Text('المتابعة',style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                              ),),
+                            ),
+                          ),
+                        ),
+                         SizedBox(height: 24.h,),
+                        Text('هل تريد لمتابعة كزائر؟',style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff008080)
+                        ),)
+                      ],
+                    ),
+                  ),
+                  
+                  ), 
         ),
         ],
-      ) ,
+        
+      )
+      
     );
   }
 }

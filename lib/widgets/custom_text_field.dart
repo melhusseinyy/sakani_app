@@ -8,55 +8,63 @@ class CustomFormTextField extends StatelessWidget {
     this.obscureText = false,
     this.prefixIcon,
     required this.suffixIcon,
-    required this.onChanged,
-     this.controller,
-     this.errorText,
-    required this.borderColor, this.maxLines=1,
-    
+
+    this.controller,
+    this.errorText,required this.onChanged,
+ 
   });
-  String hintText;
+  final String hintText;
   final TextEditingController? controller;
-  final IconData? prefixIcon;
-  final IconData suffixIcon;
-  final Function(String)? onChanged;
+  final Widget? prefixIcon;
+  final Widget suffixIcon;
+  final void Function(String)? onChanged;
+ 
+
   bool obscureText;
   final String? errorText;
-  final Color borderColor;
-  final int? maxLines ;
+
+  
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: maxLines,
-      onChanged: onChanged,
+
+      
+    onChanged:onChanged ,
+    
       textAlign: TextAlign.end,
       controller: controller,
-
+    
       obscureText: obscureText,
-      validator: (data) {
-        if (data!.isEmpty) {
-          return 'field is required';
-        }
-        return null;
-      },
-
+    
       decoration: InputDecoration(
+        contentPadding:EdgeInsets.symmetric(vertical:20.h ) ,
         
+        
+        
+       
         errorText: errorText,
-
-        suffixIcon: Icon(suffixIcon, color: Color(0xff9CA2AC)),
-        prefixIcon: Icon(prefixIcon, color: Color(0xff9CA2AC)),
-        
-
+    
+        suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
+    
         hintText: hintText,
         hintStyle: TextStyle(color: Color(0xff9CA2AC)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(65.r),
-          borderSide: BorderSide(color:Color(0xff9CA2AC)),
+          borderSide: BorderSide(color: Color(0xff9CA2AC)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(65.r),
-          borderSide: BorderSide(color:borderColor),
+          borderSide: BorderSide(color: Color(0xff15B097)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(65.r),
+          borderSide: const BorderSide(color: Color(0xffC03744)),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(65.r),
+          borderSide: const BorderSide(color: Color(0xffC03744), width: 2),
         ),
       ),
     );

@@ -20,7 +20,7 @@ class SakaniApp extends StatelessWidget {
           locale: const Locale('ar'),
           builder: (context, child) {
             return Directionality(
-              textDirection: TextDirection.ltr,
+              textDirection: TextDirection.rtl,
               child: child!,
             );
           },

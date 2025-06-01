@@ -3,17 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sakni/custom_button.dart';
 import 'package:sakni/views/forget_password_page.dart';
+import 'package:sakni/widgets/container-header.dart';
 import 'package:sakni/widgets/custom_text_field.dart';
 import 'package:sakni/widgets/face_print_widget.dart';
 
-class CustomContainer extends StatefulWidget {
-  const CustomContainer({super.key});
+class SignUpBody extends StatefulWidget {
+  const SignUpBody({super.key});
 
   @override
-  State<CustomContainer> createState() => _CustomContainerState();
+  State<SignUpBody> createState() => _SignUpBodyState();
 }
 
-class _CustomContainerState extends State<CustomContainer> {
+class _SignUpBodyState extends State<SignUpBody> {
+  String? phoneNumber;
+  String? password;
  
    String? errorTextPhone;
   String? errorTextPassword;
@@ -91,60 +94,25 @@ class _CustomContainerState extends State<CustomContainer> {
           child: Column(
             children: [
               SizedBox(height: 24.h,),
-              Container(
-                height: 60.h,decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40.r),
-                  color: Color(0xffD9D9D9)
-                ),
-                child: Row(
-                 
-                  children: [
-                    SizedBox(width: 40.w,),
-                    Text('انشاء حساب',style: TextStyle(
-                      fontWeight: FontWeight.w600,fontSize: 16.sp,
-                      color: Color(0xff9CA2AC)
-                    ),),
-                    SizedBox(width: 50.w,),
-                    Container(
-                      height: 48.w,
-                      width: 165.h,
-                      decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(33.r),
-                  color: Colors.white),
-                      child: Center(
-                        child: Text('تسجيل الدخول',style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          color: Colors.teal
-                        ),),
-                      ),
-                    )
-                  ],
-                ),
-                
-              ),
+              ContainerHeader(),
               SizedBox(height: 24.h),
-              CustomFormTextField(suffixIcon:Icons.call , hintText: 'رقم الهاتف',
-            
+              CustomFormTextField(suffixIcon:Icon(Icons.call) , hintText: 'رقم الهاتف',
+            onChanged: (data) {
+              phoneNumber=data;
+            },
               errorText: errorTextPhone,
               obscureText:true ,
               controller:phoneController,
-               borderColor:isPhoneValid?Color(0xff15B097):Color(0xffC03744) ,
-              
-              onChanged: (data) {
-
-                
-              },
               ),
               SizedBox(height: 24.h),
-              CustomFormTextField(suffixIcon:Iconsax.lock, hintText: 'كلمة المرور',prefixIcon: Icons.visibility,
-              
+              CustomFormTextField(suffixIcon:Icon(Iconsax.lock), hintText: 'كلمة المرور',prefixIcon: Icon(Icons.visibility),
+             onChanged: (data) {
+               password=data;
+             },
               controller:passwordController ,
               errorText: errorTextPassword,
-              borderColor:isPasswordValid?Color(0xff15B097):Color(0xffC03744) ,
-              onChanged: (p0) {
-                
-              },
+              
+              
               ),
               SizedBox(height:10.h ,),
               Row(
@@ -166,8 +134,8 @@ class _CustomContainerState extends State<CustomContainer> {
               SizedBox(height: 165.h,),
                         Row(children: [
                          CustomButton(onTap: (){validateAndSubmit();
-
-                         }),
+                         },width: 253.w,
+                              height: 54.h,text: 'تسجيل الدخول',),
                           SizedBox(width: 16.w,),
                          FacePrintWidget()
                         ],

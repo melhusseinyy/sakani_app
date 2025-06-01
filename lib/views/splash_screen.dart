@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:sakni/views/homeView.dart';
+import 'package:sakni/views/sign_up_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,7 +13,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 5), ()=>
+    Timer(Duration(seconds: 2), ()=>
     Navigator.pushReplacement(context,MaterialPageRoute(
       builder: (context)=>HomeView()
     ), )
