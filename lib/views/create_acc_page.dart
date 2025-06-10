@@ -1,30 +1,28 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sakni/views/select_pass.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:sakni/views/code_vertification_page.dart';
+import 'package:sakni/widgets/container-header.dart';
 import 'package:sakni/widgets/custom_text_field.dart';
 import 'package:sakni/widgets/custom_text_home.dart';
 
-
-
-class ForgetPasswordPage extends StatefulWidget {
-  const ForgetPasswordPage({super.key});
+class CreateAccPage extends StatefulWidget {
+  const CreateAccPage({super.key});
 
   @override
-  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
+  State<CreateAccPage> createState() => _CreateAccPageState();
 }
 
-class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
-  String phoneNumber='';
-  
-
+class _CreateAccPageState extends State<CreateAccPage> {
+  String? phoneNumber;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Stack(
         children: [
-          CustomTextHome(title: 'التحقق من الهاتف', subTitle: 'برجاء أدخل رقم هاتفك'),
+          CustomTextHome(title: 'مرحبا بك فى سكني', subTitle: 'هيا قم بتسجيل الدخول و ابدأ رحلتك للبحث عن سكنك'),
+          
            Positioned(
           top: 232.h,
           left: 0,
@@ -42,24 +40,20 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                     child: Column(
                       children: [
                         SizedBox(height: 24.h,),
-                        CustomFormTextField(hintText:'رقم الهاتف' ,suffixIcon:Icon(Icons.phone),prefixIcon:Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                           CountryCodePicker(),
-                          ],
-                        ) ,onChanged: (value){
+                        ContainerHeader(isCreateAccountActive: true,),
+                        SizedBox(height: 24.h,),
+                         CustomFormTextField(hintText:'رقم الهاتف' ,prefixIcon:Icon(Iconsax.call),suffixIcon:CountryCodePicker() ,onChanged: (value){
                          setState(() {
                          phoneNumber=value;
                            
                          });
                         },),
-                        SizedBox(height: 279.h,),
+                         SizedBox(height: 279.h,),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(context, MaterialPageRoute(builder:(context){
-                              return SelectPass(
-                                phoneNumber: phoneNumber,
-                              );
+                              return CodeVertificationPage();
+                              
                             }));
                           },
                           child: Container(
@@ -87,12 +81,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       ],
                     ),
                   ),
-                  
-                  ), 
-        ),
-        ],
-        
-      )
+      ),),],
+      ),
       
     );
   }

@@ -21,7 +21,7 @@ final String title,subTitle;
                     fontFamily: 'Cairo',
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                    color: Color(0xffFAFAFA),
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -32,7 +32,7 @@ final String title,subTitle;
                     fontFamily: 'Cairo',
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
-                    color: Colors.white,
+                    color: Color(0xffEDEDED),
                     
                   ),
                 ),

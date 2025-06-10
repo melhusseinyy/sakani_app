@@ -96,7 +96,7 @@ class _SignUpBodyState extends State<SignUpBody> {
               SizedBox(height: 24.h,),
               ContainerHeader(),
               SizedBox(height: 24.h),
-              CustomFormTextField(suffixIcon:Icon(Icons.call) , hintText: 'رقم الهاتف',
+              CustomFormTextField(prefixIcon:Icon(Icons.call) , hintText: 'رقم الهاتف',
             onChanged: (data) {
               phoneNumber=data;
             },
@@ -105,7 +105,7 @@ class _SignUpBodyState extends State<SignUpBody> {
               controller:phoneController,
               ),
               SizedBox(height: 24.h),
-              CustomFormTextField(suffixIcon:Icon(Iconsax.lock), hintText: 'كلمة المرور',prefixIcon: Icon(Icons.visibility),
+              CustomFormTextField(suffixIcon: Icon(Icons.visibility), hintText: 'كلمة المرور',prefixIcon:Icon(Iconsax.lock),
              onChanged: (data) {
                password=data;
              },
@@ -116,7 +116,7 @@ class _SignUpBodyState extends State<SignUpBody> {
               ),
               SizedBox(height:10.h ,),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -133,11 +133,12 @@ class _SignUpBodyState extends State<SignUpBody> {
               ),
               SizedBox(height: 165.h,),
                         Row(children: [
+                           FacePrintWidget(),  SizedBox(width: 16.w,),
                          CustomButton(onTap: (){validateAndSubmit();
                          },width: 253.w,
                               height: 54.h,text: 'تسجيل الدخول',),
-                          SizedBox(width: 16.w,),
-                         FacePrintWidget()
+                        
+                        
                         ],
       
                         ),

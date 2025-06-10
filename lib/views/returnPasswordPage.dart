@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sakni/custom_button.dart';
+import 'package:sakni/views/new_password_page.dart';
 import 'package:sakni/widgets/custom_text_home.dart';
 
 class Returnpasswordpage extends StatefulWidget {
@@ -95,8 +96,8 @@ class _ReturnpasswordpageState extends State<Returnpasswordpage> {
                     SizedBox(height: 30.h,),
                     CustomButton(onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder:(context){
-                        return
-                      }))
+                        return NewPasswordPage();
+                      }));
                     }, width: 343.w, height: 54.h, text: 'تأكيد'),
                     SizedBox(height: 11.h,),
                     Text('لم تستلم رسالة بعد؟',style: TextStyle(
@@ -113,7 +114,7 @@ class _ReturnpasswordpageState extends State<Returnpasswordpage> {
     children: [
       if (!_isTimerFinished)
         Text(
-          '(${timerText})',
+          '($timerText)',
           style: const TextStyle(
             color: Color(0xffFF4947),
           ),

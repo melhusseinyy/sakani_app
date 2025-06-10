@@ -1,42 +1,107 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sakni/views/create_acc_page.dart';
 
-class ContainerHeader extends StatelessWidget {
-  const ContainerHeader({super.key});
+class ContainerHeader extends StatefulWidget {
+  const ContainerHeader({super.key,  this.isCreateAccountActive=false});
+  final bool isCreateAccountActive;
+
+  @override
+  State<ContainerHeader> createState() => _ContainerHeaderState();
+}
+
+class _ContainerHeaderState extends State<ContainerHeader> {
+ late bool isCreateAccountActive ;
+ @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isCreateAccountActive=widget.isCreateAccountActive;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-                height: 60.h,decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40.r),
-                  color: Color(0xffD9D9D9)
-                ),
-                child: Row(
-                 
-                  children: [
-                    SizedBox(width: 40.w,),
-                    Text('انشاء حساب',style: TextStyle(
-                      fontWeight: FontWeight.w600,fontSize: 16.sp,
-                      color: Color(0xff9CA2AC)
-                    ),),
-                    SizedBox(width: 50.w,),
-                    Container(
-                      height: 48.w,
-                      width: 165.h,
-                      decoration: BoxDecoration(
+      height: 60.h,
+      width: 343.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(40.r),
+        color: const Color(0xffD9D9D9),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5).w,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // زر تسجيل الدخول
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isCreateAccountActive = false;
+                });
+                if (Navigator.canPop(context)){
+                  Navigator.pop(context);
+                }
+              },
+              child: Container(
+                height: 48.h,
+                width: 160.w,
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(33.r),
-                  color: Colors.white),
-                      child: Center(
-                        child: Text('تسجيل الدخول',style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          color: Colors.teal
-                        ),),
-                      ),
-                    )
-                  ],
+                  color: !isCreateAccountActive ? Colors.white : Colors.transparent,
                 ),
-                
-              );
+                child: Center(
+                  child: Text(
+                    'تسجيل الدخول',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                      color: !isCreateAccountActive ? Colors.teal : const Color(0xff9CA2AC),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+           
+        
+            // زر انشاء حساب
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isCreateAccountActive = true;
+                });
+        
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CreateAccPage()),
+                ).then((_) {
+                  setState(() {
+                    isCreateAccountActive = false;
+                  });
+                });
+              },
+              child: Container(
+                height: 48.w,
+                width: 160.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(33.r),
+                  color: isCreateAccountActive ? Colors.white : Colors.transparent,
+                ),
+                child: Center(
+                  child: Text(
+                    'انشاء حساب',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                      color: isCreateAccountActive ? Colors.teal : const Color(0xff9CA2AC),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
