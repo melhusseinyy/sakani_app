@@ -1,23 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sakni/views/create_acc_page.dart';
 
-class ContainerHeader extends StatefulWidget {
-  const ContainerHeader({super.key,  this.isCreateAccountActive=false});
+class ContainerHeader extends StatelessWidget {
+  const ContainerHeader({super.key,  this.isCreateAccountActive=false, required this.onTabChange});
   final bool isCreateAccountActive;
+  final void Function(bool) onTabChange;
 
-  @override
-  State<ContainerHeader> createState() => _ContainerHeaderState();
-}
-
-class _ContainerHeaderState extends State<ContainerHeader> {
- late bool isCreateAccountActive ;
- @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    isCreateAccountActive=widget.isCreateAccountActive;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +23,7 @@ class _ContainerHeaderState extends State<ContainerHeader> {
           children: [
             // زر تسجيل الدخول
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  isCreateAccountActive = false;
-                });
-                if (Navigator.canPop(context)){
-                  Navigator.pop(context);
-                }
-              },
+              onTap:() =>onTabChange(false) ,
               child: Container(
                 height: 48.h,
                 width: 160.w,
@@ -66,20 +47,8 @@ class _ContainerHeaderState extends State<ContainerHeader> {
         
             // زر انشاء حساب
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  isCreateAccountActive = true;
-                });
-        
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CreateAccPage()),
-                ).then((_) {
-                  setState(() {
-                    isCreateAccountActive = false;
-                  });
-                });
-              },
+              onTap:() =>onTabChange(true)
+              ,
               child: Container(
                 height: 48.w,
                 width: 160.h,

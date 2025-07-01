@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sakni/custom_button.dart';
 import 'package:sakni/views/forget_password_page.dart';
-import 'package:sakni/widgets/container-header.dart';
 import 'package:sakni/widgets/custom_text_field.dart';
 import 'package:sakni/widgets/face_print_widget.dart';
 
@@ -17,9 +16,11 @@ class SignUpBody extends StatefulWidget {
 class _SignUpBodyState extends State<SignUpBody> {
   String? phoneNumber;
   String? password;
+  bool obscurePassword=true;
  
    String? errorTextPhone;
   String? errorTextPassword;
+  
   bool isPhoneValid= true;
   bool isPasswordValid= true;
   GlobalKey <FormState> formkey=GlobalKey();
@@ -81,36 +82,38 @@ class _SignUpBodyState extends State<SignUpBody> {
     return Form(
       key: formkey,
       
-      child: Container(
-      height: 580.h
-      ,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(40.r),
-          topRight: Radius.circular(40.r)),
-          color: Colors.white
-        ),
-        child: Padding(
-         padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              SizedBox(height: 24.h,),
-              ContainerHeader(),
-              SizedBox(height: 24.h),
+      child: Padding(
+       padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+           Expanded(
+             child: SingleChildScrollView(
+              child:Column(mainAxisSize: MainAxisSize.max,
+                children: [
+                  
               CustomFormTextField(prefixIcon:Icon(Icons.call) , hintText: 'رقم الهاتف',
-            onChanged: (data) {
+                       onChanged: (data) {
               phoneNumber=data;
-            },
+                       },
               errorText: errorTextPhone,
-              obscureText:true ,
+             
               controller:phoneController,
               ),
               SizedBox(height: 24.h),
-              CustomFormTextField(suffixIcon: Icon(Icons.visibility), hintText: 'كلمة المرور',prefixIcon:Icon(Iconsax.lock),
+                   
+              CustomFormTextField(suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    obscurePassword=!obscurePassword;
+                  });
+                },
+                child: Icon(obscurePassword? Iconsax.eye_slash_copy:Iconsax.eye_copy)), hintText: 'كلمة المرور',prefixIcon:Icon(Iconsax.lock),
              onChanged: (data) {
                password=data;
              },
               controller:passwordController ,
               errorText: errorTextPassword,
+              obscureText: obscurePassword,
               
               
               ),
@@ -131,29 +134,41 @@ class _SignUpBodyState extends State<SignUpBody> {
                   ),
                 ],
               ),
-              SizedBox(height: 165.h,),
-                        Row(children: [
-                           FacePrintWidget(),  SizedBox(width: 16.w,),
-                         CustomButton(onTap: (){validateAndSubmit();
-                         },width: 253.w,
-                              height: 54.h,text: 'تسجيل الدخول',),
-                        
-                        
-                        ],
-      
-                        ),
-                        SizedBox(height: 24.h,),
-                        Text('هل تريد لمتابعة كزائر؟',style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff008080)
-                        ),)
-      
-      
-            ],
-          ),
+                   
+                ],
+              ) ,
+             ),
+           ),
+           
+                
+           
+          
+            
+          
+                      Row(children: [
+                         FacePrintWidget(),  SizedBox(width: 16.w,),
+                       CustomButton(onTap: (){validateAndSubmit();
+                       },width: 253.w,
+                       
+                            height: 54.h,text: 'تسجيل الدخول',),
+                      
+                      
+                      ],
+              
+                      ),
+                      SizedBox(height: 24.h,),
+                      Text('هل تريد لمتابعة كزائر؟',style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff008080)
+                      ),)
+              
+              
+          ],
         ),
       ),
     );
   }
 }
+
+

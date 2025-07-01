@@ -29,11 +29,17 @@ class CheckContainer extends StatelessWidget {
          )
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+              Padding(
+              padding: const EdgeInsets.only(right: 12,left: 12).w,
+              child: Image.asset(image),
+            ),
              Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+               
+           
                 Text(text1,style: TextStyle(
                   fontSize: 16.sp,fontWeight: FontWeight.w400
                 ),),
@@ -42,10 +48,6 @@ class CheckContainer extends StatelessWidget {
                 ),),
       
               ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 12,left: 12).w,
-              child: Image.asset(image),
             ),
            
           ],

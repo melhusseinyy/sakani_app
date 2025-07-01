@@ -18,6 +18,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   bool PasswordsMatch = true;
+   bool _obscurePassword=true;
   void checkPasswordMatch() {
     setState(() {
       PasswordsMatch =
@@ -63,9 +64,26 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     CustomFormTextField(
                       hintText: 'كلمة المرور الجديده',
                       prefixIcon: Icon(Iconsax.lock),
-                      suffixIcon: Icon(Icons.visibility),
+                      suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscurePassword=! _obscurePassword;
+
+                              });
+                            
+                            },
+                            child: Icon(_obscurePassword? Iconsax.eye_slash_copy:Iconsax.eye_copy, color:Color(0xff9CA2AC)),
+                          ),
+                           
+                          obscureText: _obscurePassword,
                       controller: newPasswordController,
-                      obscureText: true,
+                     
+                      validator: (value) {
+    if (value == null || value.length < 8) {
+      return 'كلمة المرور يجب أن تكون 8 أحرف على الأقل';
+    }
+    return null;
+  },
                       onChanged: (data) {
                         checkPasswordMatch();
                       },
@@ -78,9 +96,25 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                     CustomFormTextField(
                       hintText: 'تأكيد كلمة المرور الجديده',
                       prefixIcon: Icon(Iconsax.lock),
-                      suffixIcon: Icon(Icons.visibility),
+                      suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscurePassword=! _obscurePassword;
+
+                              });
+                            
+                            },
+                            child: Icon(_obscurePassword? Iconsax.eye_slash_copy:Iconsax.eye_copy, color:Color(0xff9CA2AC)),
+                          ),
+                           
                       controller: confirmPasswordController,
                       obscureText: true,
+                      validator: (value) {
+    if (value != newPasswordController.text) {
+      return 'كلمة المرور غير متطابقة';
+    }
+    return null;
+  },
                       onChanged: (data) {
                         checkPasswordMatch();
                       },

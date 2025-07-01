@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sakni/custom_button.dart';
-import 'package:sakni/views/sign_up_page.dart';
+
+import 'package:sakni/widgets/home_view_body.dart';
 
 class SuccessNewPassword extends StatelessWidget {
   const SuccessNewPassword({super.key});
@@ -50,7 +51,7 @@ class SuccessNewPassword extends StatelessWidget {
                 SizedBox(height: 200.h,),
                 CustomButton(onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return HomeView();
+                    return HomeViewBody();
                   }));
                 }, width: 343.w, height: 54.h, text: 'العودة لتسجيل الدخول')
                       ],

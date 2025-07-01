@@ -18,6 +18,7 @@ class _ReturnpasswordpageState extends State<Returnpasswordpage> {
    Timer? _timer;
   int _seconds = 120;
   bool _isTimerFinished = false;
+  String vertificationCode='';
 
   @override
   void initState() {
@@ -90,11 +91,25 @@ class _ReturnpasswordpageState extends State<Returnpasswordpage> {
                     SizedBox(height: 40.h,),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 68).w,
-                      child: PinCodeTextField(appContext: context, length: 4,pinTheme: PinTheme(inactiveColor:Color(0xff9CA2AC) ,selectedColor: Color(0xff008080)),
+                      child: Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: PinCodeTextField(appContext: context, length: 4,
+                        
+                        onChanged: (value) {
+                          vertificationCode=value;
+                        },
+                        pinTheme: PinTheme(inactiveColor:Color(0xff9CA2AC) ,selectedColor: Color(0xff008080)),
+                        ),
                       ),
                     ),
                     SizedBox(height: 30.h,),
                     CustomButton(onTap: (){
+                       if(vertificationCode.length!=4){
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text('ادخل رمز مكون من 4 ارقام'),
+                          backgroundColor: Colors.red,));
+                          return;
+
+                        }
                       Navigator.push(context, MaterialPageRoute(builder:(context){
                         return NewPasswordPage();
                       }));

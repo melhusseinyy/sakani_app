@@ -10,9 +10,10 @@ class CustomFormTextField extends StatelessWidget {
      this.suffixIcon,
      
      
+     
 
     this.controller,
-    this.errorText,required this.onChanged, this.bordercolor, this.onTap, this.validator,
+    this.errorText, this.onChanged, this.bordercolor, this.onTap, this.validator,
  
   });
   final String? hintText;
