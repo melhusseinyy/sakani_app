@@ -1,11 +1,8 @@
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sakni/helper/extention.dart';
 import 'package:sakni/widgets/custom_card.dart';
-import 'package:sakni/widgets/vertical_card.dart';
 
 class OffersPage extends StatelessWidget {
   const OffersPage({super.key});

@@ -218,20 +218,8 @@ if ((selectedDuration ?? widget.duration) != null && (selectedDuration ?? widget
                     : Expanded(
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                'نتائج البحث',
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xff008080),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 3).w,
-                                child: GestureDetector(
-                                  onTap: () {
+                          GestureDetector(
+                             onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -241,55 +229,79 @@ if ((selectedDuration ?? widget.duration) != null && (selectedDuration ?? widget
                                       ),
                                     );
                                   },
-                                  child: Icon(
-                                    Iconsax.setting_3_copy,
+                            child: Row(
+                              children: [
+                                Text(
+                                  'نتائج البحث',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
                                     color: Color(0xff008080),
-                                    size: 16,
                                   ),
                                 ),
-                              ),
-                              Spacer(),
-                              Image.asset(
-                                'assets/images/pepicons-print_map.png',
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(
-                                      left: 16,
-                                      right: 16,
-                                    ).w,
-                                child: GestureDetector(
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 3).w,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return FilterSearchPage();
+                                          },
+                                        ),
+                                      );
+                                    },
+                                    child: Icon(
+                                      Iconsax.setting_3_copy,
+                                      color: Color(0xff008080),
+                                      size: 16,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Image.asset(
+                                  'assets/images/pepicons-print_map.png',
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(
+                                        left: 16,
+                                        right: 16,
+                                      ).w,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isSelected = true;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Iconsax.row_horizontal,
+                                      color:
+                                          isSelected
+                                              ? Color(0xff008080)
+                                              : Color(0xff8E8E8E),
+                                      size: 22,
+                                    ),
+                                  ),
+                                ),
+                                GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      isSelected = true;
+                                      isSelected = false;
                                     });
                                   },
                                   child: Icon(
-                                    Iconsax.row_horizontal,
+                                    Iconsax.row_vertical,
                                     color:
-                                        isSelected
+                                        !isSelected
                                             ? Color(0xff008080)
                                             : Color(0xff8E8E8E),
                                     size: 22,
                                   ),
                                 ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isSelected = false;
-                                  });
-                                },
-                                child: Icon(
-                                  Iconsax.row_vertical,
-                                  color:
-                                      !isSelected
-                                          ? Color(0xff008080)
-                                          : Color(0xff8E8E8E),
-                                  size: 22,
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           SizedBox(height: 8.h),
                           Expanded(

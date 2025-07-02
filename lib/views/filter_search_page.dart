@@ -16,11 +16,11 @@ const  FilterSearchPage({super.key});
 }
 
 class _FilterSearchPageState extends State<FilterSearchPage> {
-SfRangeValues _values= SfRangeValues(100000.0, 200000.0);
+SfRangeValues _values= SfRangeValues(0, 150000.0);
 final bool selectedIndex=false;
-final List<String> selectHouseTyping=['الكل','شقة','غرفة','سرير'];
-final List<String> selectLocation=['الكل','الاقرب'];
-final List<String> selectAdvantages=['الكل','غاز طبيعي','اجهزة كهربائية','قريبه من الخدمات','ماكينة قهوه','بها حمام خاص','قريبه من الجيم','مساحة خضراء','واي فاي'];
+ List<String> selectHouseTyping=[];
+ List<String> selectLocation=[];
+ List<String> selectAdvantages=[];
  double? selectedRating;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,11 @@ final List<String> selectAdvantages=['الكل','غاز طبيعي','اجهزة 
                   fontSize: 16.sp,fontWeight: FontWeight.w700,color: Color(0xff008080)
                 ),),
                 Spacer(),
-                 Icon(Iconsax.arrow_left_2_copy,color: Color(0xff008080),size: 16,),
+                 GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Iconsax.arrow_left_2_copy,color: Color(0xff008080),size: 16,)),
               ],
             ),
           ),

@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sakni/helper/image_slider.dart';
 import 'package:sakni/widgets/Bullet_point.dart';
+import 'package:sakni/widgets/location_map.dart';
 import 'package:sakni/widgets/reviews.dart';
+import 'package:share_plus/share_plus.dart';
 
 class SaknDetails extends StatelessWidget {
   const SaknDetails({super.key});
@@ -62,26 +64,33 @@ class SaknDetails extends StatelessWidget {
                         ),
                         color: Color(0xff008080),
                       ),
-                      child: SizedBox(
-                        height: 22.h,
-                        width: 72.w,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              'مشاركة',
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff008080),
+                      child: GestureDetector(
+                        onTap: (){
+                      SharePlus.instance.share(
+  ShareParams(text: ' https://www.liverpoolfc.com/')
+);
+                    },
+                        child: SizedBox(
+                          height: 22.h,
+                          width: 72.w,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'مشاركة',
+                                style: TextStyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xff008080),
+                                ),
                               ),
-                            ),
-                            Icon(
-                              Iconsax.export_1_copy,
-                              color: Color(0xff008080),
-                              size: 14,
-                            ),
-                          ],
+                              Icon(
+                                Iconsax.export_1_copy,
+                                color: Color(0xff008080),
+                                size: 14,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -384,11 +393,9 @@ class SaknDetails extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 16.h),
-                        Image.asset(
-                          'assets/images/🌎 Map Maker_ Mansoura, Dakahlia, Egypt (Standard).png',
-                          width: double.infinity,
-                          fit: BoxFit.fill,
-                        ),
+                         SizedBox(
+                          height: 300.h,
+                          child: CurrentLocationMap()),
                         SizedBox(height: 26.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -458,7 +465,7 @@ class SaknDetails extends StatelessWidget {
                           reviewText:
                               'كتب علم التصريف - الصرف في اللغة العربية .. ركن خاص بكتب مجانيه للتحميل في علم الصرف كما تُعرف باسم الصِرافة أو علم التشكل أو علم تشكُّل الكلمات هو العلم الذي يعرف به أحوال بنية الكلمة، وصرفها على وجوه شتى لمعان مختلفة، وقد يكون هذا التغيير في هذه البنية إما لسبب معنوي',
                           date: DateTime(2023,8,13),
-                          rating: 4,
+                          rating: 5,
                         ),
                        
                         Padding(
@@ -473,7 +480,7 @@ class SaknDetails extends StatelessWidget {
                           reviewText:
                               'كتب علم التصريف - الصرف في اللغة العربية .. ركن خاص بكتب مجانيه للتحميل في علم الصرف كما تُعرف باسم الصِرافة أو علم التشكل أو علم تشكُّل الكلمات هو العلم الذي يعرف به أحوال بنية الكلمة، وصرفها على وجوه شتى لمعان مختلفة، وقد يكون هذا التغيير في هذه البنية إما لسبب معنوي',
                           date: DateTime(2023,12,25),
-                          rating: 4,
+                          rating: 1,
                         ),
                        
                         Padding(
@@ -490,7 +497,12 @@ class SaknDetails extends StatelessWidget {
                           date: DateTime(2023,2,24),
                           rating: 4,
                         ),
-                        SizedBox(height: 16.h,),
+                       
+                      ],
+                    ),
+                  ),
+                ),
+                 SizedBox(height: 16.h,),
                          Container(
             width: 343.w,
             height: 33.h,
@@ -509,10 +521,6 @@ class SaknDetails extends StatelessWidget {
               ),
             ),
           ),
-                      ],
-                    ),
-                  ),
-                ),
               ],
             ),
           ),

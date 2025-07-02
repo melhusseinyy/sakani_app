@@ -85,10 +85,10 @@ String _getStatus(DateTime date){
     return 'جديدة';
   }else if(diff.inHours<24){
     String formattedTime=DateFormat('hh a','ar').format(date);
-    return '$formattedTime';
+    return formattedTime;
   }else{
     int days=diff.inDays;
-    return'قبل ${days} يوم';
+    return'قبل $days يوم';
   }
 
 }

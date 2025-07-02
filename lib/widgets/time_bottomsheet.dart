@@ -55,7 +55,11 @@ class _TimeBottomsheetState extends State<TimeBottomsheet> {
           mainAxisSize: MainAxisSize.min,
         children: [
           Row(children: [
-            Icon(Iconsax.close_square_copy,color: Color(0xffC03744),size: 16,),
+            GestureDetector(
+              onTap: () {
+                 Navigator.pop(context);
+              },
+              child: Icon(Iconsax.close_square_copy,color: Color(0xffC03744),size: 16,)),
             SizedBox(width: 119.w,),
             Padding(
               padding: const EdgeInsets.only(left: 4),
@@ -104,22 +108,25 @@ class _TimeBottomsheetState extends State<TimeBottomsheet> {
                                                                        ),
                                    ),
                                   GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () {
                                       widget.onDurationSelected('سنة');
                                        Navigator.pop(context);
                                     },
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 10,left: 4,).w,
-                                          child: Icon(Iconsax.calendar_tick_copy,color: Color(0xff008080),size: 16,),
-                                        ),
-                                        Text('سنة',style: TextStyle(
-                                                  fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
-                                                ),)
-                                        
-                                        
-                                      ],
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 10,left: 4,).w,
+                                            child: Icon(Iconsax.calendar_tick_copy,color: Color(0xff008080),size: 16,),
+                                          ),
+                                          Text('سنة',style: TextStyle(
+                                                    fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
+                                                  ),)
+                                          
+                                          
+                                        ],
+                                      ),
                                     ),
                                   ),
 
@@ -130,23 +137,27 @@ class _TimeBottomsheetState extends State<TimeBottomsheet> {
                                     width: 343.w,),
                                   ),
                                   GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () {
                                       widget.onDurationSelected('ترم');
                                        Navigator.pop(context);
                                       
                                       
                                     },
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 10,left: 4).w,
-                                          child: Icon(Iconsax.calendar_tick_copy,color: Color(0xff008080),size: 16,),
-                                        ),
-                                        Text('ترم',style: TextStyle(
-                                                  fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
-                                                ),)
-                                                               
-                                      ],
+                                    child: Container(
+                                     
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 10,left: 4).w,
+                                            child: Icon(Iconsax.calendar_tick_copy,color: Color(0xff008080),size: 16,),
+                                          ),
+                                          Text('ترم',style: TextStyle(
+                                                    fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
+                                                  ),)
+                                                                 
+                                        ],
+                                      ),
                                     ),
                                   ),
                                    Padding(
@@ -156,22 +167,26 @@ class _TimeBottomsheetState extends State<TimeBottomsheet> {
                                     width: 343.w,),
                                   ),
                                    GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () {
                                       widget.onDurationSelected('شهر');
                                       Navigator.pop(context);
                                     },
-                                     child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 10,left: 4).w,
-                                          child: Icon(Iconsax.calendar_tick_copy,color: Color(0xff008080),size: 16,),
-                                        ),
-                                        Text('شهر',style: TextStyle(
-                                                   fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
-                                                 ),)
-                                                                
-                                      ],
-                                                                       ),
+                                     child: Container(
+                                     
+                                       child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 10,left: 4).w,
+                                            child: Icon(Iconsax.calendar_tick_copy,color: Color(0xff008080),size: 16,),
+                                          ),
+                                          Text('شهر',style: TextStyle(
+                                                     fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
+                                                   ),)
+                                                                  
+                                        ],
+                                                                         ),
+                                     ),
                                    ),
                                   SizedBox(height: 16.h,)
                                   

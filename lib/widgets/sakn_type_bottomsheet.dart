@@ -16,7 +16,11 @@ class SaknTypeBottomsheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
         children: [
           Row(children: [
-            Icon(Iconsax.close_square_copy,color: Color(0xffC03744),size: 16,),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Iconsax.close_square_copy,color: Color(0xffC03744),size: 16,)),
             SizedBox(width: 119.w,),
             Padding(
               padding: const EdgeInsets.only(left: 4),
@@ -38,21 +42,24 @@ class SaknTypeBottomsheet extends StatelessWidget {
            
                                   SizedBox(height: 12.h,),
                                   GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () {
                                       Navigator.pop(context,'شقة');
                                     },
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 10,left: 4,).w,
-                                          child: Icon(Iconsax.house_2_copy,color: Color(0xff008080),size: 16,),
-                                        ),
-                                        Text('شقه',style: TextStyle(
-                                                  fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
-                                                ),)
-                                        
-                                        
-                                      ],
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 10,left: 4,).w,
+                                            child: Icon(Iconsax.house_2_copy,color: Color(0xff008080),size: 16,),
+                                          ),
+                                          Text('شقه',style: TextStyle(
+                                                    fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
+                                                  ),)
+                                          
+                                          
+                                        ],
+                                      ),
                                     ),
                                   ),
 
@@ -63,20 +70,23 @@ class SaknTypeBottomsheet extends StatelessWidget {
                                     width: 343.w,),
                                   ),
                                   GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () {
                                        Navigator.pop(context,'غرفة');
                                     },
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 10,left: 4).w,
-                                          child: Image.asset('assets/images/Vector (1).png')
-                                        ),
-                                        Text('غرفة',style: TextStyle(
-                                                  fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
-                                                ),)
-                                                               
-                                      ],
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 10,left: 4).w,
+                                            child: Image.asset('assets/images/Vector (1).png')
+                                          ),
+                                          Text('غرفة',style: TextStyle(
+                                                    fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
+                                                  ),)
+                                                                 
+                                        ],
+                                      ),
                                     ),
                                   ),
                                    Padding(
@@ -86,21 +96,24 @@ class SaknTypeBottomsheet extends StatelessWidget {
                                     width: 343.w,),
                                   ),
                                    GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () {
                                        Navigator.pop(context,'سرير');
                                     },
-                                     child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(right: 10,left: 4).w,
-                                          child: Image.asset('assets/images/solar_bed-linear.png')
-                                        ),
-                                        Text('سرير',style: TextStyle(
-                                                   fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
-                                                 ),)
-                                                                
-                                      ],
-                                                                       ),
+                                     child: Container(
+                                       child: Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 10,left: 4).w,
+                                            child: Image.asset('assets/images/solar_bed-linear.png')
+                                          ),
+                                          Text('سرير',style: TextStyle(
+                                                     fontSize: 12.sp,fontWeight: FontWeight.w600,color:  Color(0xff008080)
+                                                   ),)
+                                                                  
+                                        ],
+                                                                         ),
+                                     ),
                                    ),
                                   SizedBox(height: 16.h,)
                                   

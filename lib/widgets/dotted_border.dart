@@ -2,7 +2,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:sakni/views/search_page.dart';
 import 'package:sakni/widgets/loction_buttom_sheet.dart';
 import 'package:sakni/widgets/container_for_dotted_border.dart';
 import 'package:sakni/widgets/sakn_type_bottomsheet.dart';

@@ -19,7 +19,11 @@ class LocationButtomSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
         children: [
           Row(children: [
-            Icon(Iconsax.close_square_copy,color: Color(0xffC03744),size: 16,),
+            GestureDetector(
+              onTap: () {
+                 Navigator.pop(context);
+              },
+              child: Icon(Iconsax.close_square_copy,color: Color(0xffC03744),size: 16,)),
             SizedBox(width: 119.w,),
             Padding(
               padding: const EdgeInsets.only(left: 4),

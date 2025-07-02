@@ -35,12 +35,15 @@ class _ImageSliderState extends State<ImageSlider> {
                 });
               },
               itemBuilder: (context,index){
-                return  Image.asset(
-                  _images[index]
-           ,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          );
+                return  ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(16.r),
+                  child: Image.asset(
+                    _images[index]
+                             ,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                );
               }),
           ),
         ),

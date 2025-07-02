@@ -50,9 +50,7 @@ class _ReviewsState extends State<Reviews> {
               SizedBox(height: 6.h,),
               StarReviws(
                 initialRating: widget.rating,
-                onRatingChange: (rating) {
-    print('التقييم المختار: $rating');
-  },),
+                ),
   ],),Spacer(),
    Text(formattedDate,style: TextStyle(
     color: Color(0xff8F959E),fontSize: 12.sp,fontWeight: FontWeight.w600
