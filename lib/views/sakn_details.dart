@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sakni/helper/image_slider.dart';
+import 'package:sakni/views/booking_details.dart';
 import 'package:sakni/widgets/Bullet_point.dart';
 import 'package:sakni/widgets/location_map.dart';
 import 'package:sakni/widgets/reviews.dart';
@@ -503,24 +504,36 @@ class SaknDetails extends StatelessWidget {
                   ),
                 ),
                  SizedBox(height: 16.h,),
-                         Container(
-            width: 343.w,
-            height: 33.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25.sp),
-              color: Color(0xff008080),
-            ),
-            child: Center(
-              child: Text(
-                'حجز EG2000',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14.sp,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
+                         GestureDetector(
+                           onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return BookingDetails();
+                                        },
+                                      ),
+                                    );
+                                  },
+                           child: Container(
+                                       width: 343.w,
+                                       height: 33.h,
+                                       decoration: BoxDecoration(
+                                         borderRadius: BorderRadius.circular(25.sp),
+                                         color: Color(0xff008080),
+                                       ),
+                                       child: Center(
+                                         child: Text(
+                                           'حجز EG2000',
+                                           style: TextStyle(
+                                             fontWeight: FontWeight.w700,
+                                             fontSize: 14.sp,
+                                             color: Colors.white,
+                                           ),
+                                         ),
+                                       ),
+                                     ),
+                         ),
               ],
             ),
           ),
