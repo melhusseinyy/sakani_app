@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sakni/helper/extention.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UploadDottedBorder extends StatelessWidget {
@@ -28,6 +27,7 @@ class UploadDottedBorder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: () => _pickImage(context),
       child: DottedBorder(
                      options: RoundedRectDottedBorderOptions(

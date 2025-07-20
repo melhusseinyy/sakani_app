@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sakni/helper/image_slider.dart';
-import 'package:sakni/views/booking_details.dart';
+import 'package:sakni/views/tab_bar_page.dart';
 import 'package:sakni/widgets/Bullet_point.dart';
 import 'package:sakni/widgets/location_map.dart';
 import 'package:sakni/widgets/reviews.dart';
@@ -12,16 +12,19 @@ import 'package:share_plus/share_plus.dart';
 class SaknDetails extends StatelessWidget {
   const SaknDetails({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Scaffold(
+          
           resizeToAvoidBottomInset: false,
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
+               
                 SizedBox(height: 54.h),
                 Row(
                   children: [
@@ -104,6 +107,8 @@ class SaknDetails extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
+
+
                         Row(
                           children: [
                             Text(
@@ -510,7 +515,7 @@ class SaknDetails extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return BookingDetails();
+                                          return TabBarPage();
                                         },
                                       ),
                                     );

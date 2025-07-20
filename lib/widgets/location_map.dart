@@ -44,9 +44,7 @@ class _CurrentLocationMapState extends State<CurrentLocationMap> {
 
     // احصل على الموقع الحالي
     Position position = await Geolocator.getCurrentPosition();
-    setState(() {
-      currentPosition = LatLng(position.latitude, position.longitude);
-    });
+   currentPosition = LatLng(position.latitude, position.longitude);
 
     // حرّك الكاميرا للموقع الحالي لو الخريطة اتنشأت
     mapController.animateCamera(CameraUpdate.newLatLngZoom(currentPosition!, 16));

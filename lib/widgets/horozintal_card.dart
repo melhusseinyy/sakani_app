@@ -46,8 +46,8 @@ class HorozintalCard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Icon(
-                                  Iconsax.heart_copy,
-                                  color: Colors.white,
+                                  Iconsax.heart,
+                                  color: Colors.red,
                                   size: 16,
                                 ),
                                 Container(

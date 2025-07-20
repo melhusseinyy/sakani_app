@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sakni/views/create_acc_page.dart';
 import 'package:sakni/widgets/container-header.dart';
-import 'package:sakni/widgets/sign_up_body.dart';
+import 'package:sakni/widgets/sign_in_body.dart';
 import 'package:sakni/widgets/custom_text_home.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -13,7 +13,7 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
-  bool isCreateAccountActive = false;
+  bool isCreateAccountActive = true;
 
   void handleTabChange(bool value) {
     setState(() {
@@ -55,7 +55,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   Expanded(
                     child: isCreateAccountActive
                         ? CreateAccountBody() // جسم صفحة إنشاء حساب
-                        : SignUpBody(),         // جسم صفحة تسجيل دخول (الكود اللي انت عاملها)
+                        : SigninBody(),         // جسم صفحة تسجيل دخول (الكود اللي انت عاملها)
                   ),
                 ],
               ),

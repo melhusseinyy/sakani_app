@@ -1,10 +1,18 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sakni/core/api/dio_consumer.dart';
+import 'package:sakni/cubits/Auth_cubit/auth_cubit.dart';
 import 'package:sakni/views/main_navigation_page.dart';
+import 'package:sakni/widgets/home_view_body.dart';
+import 'package:sakni/widgets/sign_in_body.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const SakaniApp());
+  runApp(
+    BlocProvider(create: (context) => AuthCubit(DioConsumer(dio: Dio())), child: const SakaniApp()),
+  );
 }
 
 class SakaniApp extends StatelessWidget {
@@ -18,20 +26,14 @@ class SakaniApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
-          supportedLocales: [
-            const Locale('ar'),
-            const Locale('en'),
-          ],
+          supportedLocales: [const Locale('ar'), const Locale('en')],
           locale: const Locale('ar'),
           localizationsDelegates: [
-             GlobalMaterialLocalizations.delegate,
-             GlobalWidgetsLocalizations.delegate,
-             GlobalCupertinoLocalizations.delegate,
-
-
-
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
           ],
-          checkerboardOffscreenLayers:true ,
+          checkerboardOffscreenLayers: true,
           builder: (context, child) {
             // return Directionality(
             //   textDirection: TextDirection.ltr,
@@ -39,11 +41,9 @@ class SakaniApp extends StatelessWidget {
             // );
             return child!;
           },
-          theme: ThemeData(
-            fontFamily: 'Cairo',
-          ),
+          theme: ThemeData(fontFamily: 'Cairo'),
           debugShowCheckedModeBanner: false,
-          home: const MainNavigationPage(),
+          home: const HomeViewBody(),
         );
       },
     );
