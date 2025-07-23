@@ -1,11 +1,11 @@
-import 'dart:io';
 
 import 'package:bloc/bloc.dart';
-import 'package:dio/io.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
-import 'package:dio/dio.dart';
+import 'package:sakni/cache/cache_helper.dart';
 import 'package:sakni/core/api/api_consumer.dart';
+import 'package:sakni/core/api/end_point.dart';
+import 'package:sakni/core/errors/exceptions.dart';
+import 'package:sakni/models/Auth_model/user_model.dart';
 
 part 'auth_state.dart';
 
@@ -15,31 +15,24 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> formkey = GlobalKey();
 
   SignIn({required String phone, required String password}) async {
+   UserModel? user;
+
     try {
       emit(AuthLoading());
-      final dio = Dio(
-        BaseOptions(
-          headers: {'Accept': 'application/json'},
-          receiveDataWhenStatusError: true,
-        ),
-      );
-
-      // تخطي فحص SSL - فقط أثناء التطوير
-      (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
-        final client = HttpClient();
-        client.badCertificateCallback = (cert, host, port) => true;
-        return client;
-      };
+        
 
       final response = await api.post(
-        // "https://sakanak.x-coders.net/api/login",
-        // // data: {'phone': phone, 'password': password},
+        EndPoint.login,
+        data: {ApiKey.phone: phone, ApiKey.password: password},
       );
+      user=UserModel.fromjson(response['data']);
+      await UserCacheHelper.saveUser(user);
+      
       emit(AuthSuccess());
-      print(response);
-    } on Exception catch (e) {
-      emit(AuthFailure(errMessage: e.toString()));
-      print(e.toString());
+         
+    } on ServerException catch (e) {
+      emit(AuthFailure(errMessage:e.errModel.message));
+     
     }
   }
 }

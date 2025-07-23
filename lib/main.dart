@@ -4,12 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sakni/core/api/dio_consumer.dart';
 import 'package:sakni/cubits/Auth_cubit/auth_cubit.dart';
-import 'package:sakni/views/main_navigation_page.dart';
 import 'package:sakni/widgets/home_view_body.dart';
-import 'package:sakni/widgets/sign_in_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  
   runApp(
     BlocProvider(create: (context) => AuthCubit(DioConsumer(dio: Dio())), child: const SakaniApp()),
   );

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sakni/custom_button.dart';
 import 'package:sakni/helper/extention.dart';
-import 'package:sakni/views/wallet_page.dart';
 
 class WalletDialoge extends StatelessWidget {
   const WalletDialoge({super.key, required this.image, required this.subtext, required this.text, required this.onButtonTap});

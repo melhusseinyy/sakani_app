@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:sakni/helper/extention.dart';
-import 'package:sakni/widgets/now_tab_bar.dart';
-import 'package:sakni/widgets/refused_tab_bar.dart';
-import 'package:sakni/widgets/tab_bar_new.dart';
 class TabBarPage extends StatefulWidget {
   const TabBarPage({super.key});
 
@@ -26,8 +20,9 @@ class _TabBarPageState extends State<TabBarPage> with SingleTickerProviderStateM
       if (_tabController.indexIsChanging) return;
 
       setState(() {
-        if (_tabController.index == 0) selectedTab = 'جديدة';
-        else if (_tabController.index == 1) selectedTab = 'حالية';
+        if (_tabController.index == 0) {
+          selectedTab = 'جديدة';
+        } else if (_tabController.index == 1) selectedTab = 'حالية';
         else if (_tabController.index == 2) selectedTab = 'مرفوضة';
       });
     });
